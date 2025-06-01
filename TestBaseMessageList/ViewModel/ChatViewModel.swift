@@ -59,13 +59,13 @@ final class ChatViewModel {
     }
     
     func loadSampleMessages() {
-        let sampleMessages = MockDataProvider.generateSampleMessages()
+        let sampleMessages = MockDataProvider.generateSampleMessages().reversed()
         sampleMessages.forEach { dataSource.addMessage($0) }
     }
     
     func loadConversationTemplate(type: ConversationType) {
         dataSource.clearAllMessages()
-        let templateMessages = MockDataProvider.generateConversationTemplate(type: type)
+        let templateMessages = MockDataProvider.generateConversationTemplate(type: type).reversed()
         templateMessages.forEach { dataSource.addMessage($0) }
     }
     

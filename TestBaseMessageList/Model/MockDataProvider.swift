@@ -16,31 +16,37 @@ final class MockDataProvider {
         
         return [
             Message(
-                text: "Hi there!",
+                text: "Incoming message",
+                date: now.addingTimeInterval(-600), // 5 minutes ago
+                isOutgoing: false,
+                isSending: false
+            ),
+            Message(
+                text: "Outgoing message",
                 date: now.addingTimeInterval(-300), // 5 minutes ago
                 isOutgoing: true,
                 isSending: false
             ),
             Message(
-                text: "Hello! How are you doing today?",
+                text: ".",
                 date: now.addingTimeInterval(-240), // 4 minutes ago
                 isOutgoing: false,
                 isSending: false
             ),
             Message(
-                text: "I'm doing great, thanks for asking! How about you?",
+                text: "One line message one line message",
                 date: now.addingTimeInterval(-180), // 3 minutes ago
                 isOutgoing: true,
                 isSending: false
             ),
             Message(
-                text: "That's wonderful to hear! I'm having a good day too.",
+                text: "One line message max width one line................",
                 date: now.addingTimeInterval(-120), // 2 minutes ago
                 isOutgoing: false,
                 isSending: false
             ),
             Message(
-                text: "You too:)",
+                text: "Multi line message multi line multi multi on line message multi line message multi line",
                 date: now,
                 isOutgoing: true,
                 isSending: false
