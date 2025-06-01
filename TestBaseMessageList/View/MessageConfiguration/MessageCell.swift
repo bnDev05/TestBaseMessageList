@@ -5,7 +5,6 @@
 //  Created by Behruz Norov on 31/05/25.
 //
 
-// MessageCell.swift
 import UIKit
 
 final class MessageCell: UICollectionViewCell {
@@ -47,6 +46,7 @@ final class MessageCell: UICollectionViewCell {
 
     // MARK: - Setup
     private func setupViews() {
+        bubbleContainerView.transform = CGAffineTransform(scaleX: 1, y: -1)
         contentView.addSubview(bubbleContainerView)
         bubbleContainerView.addSubview(bubbleView)
         [messageLabel, timeLabel, indicatorImage].forEach(bubbleView.addSubview(_:))

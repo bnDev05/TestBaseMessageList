@@ -38,6 +38,7 @@ final class ChatViewController: UIViewController {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: MessageCell.identifier)
+        collectionView.transform = CGAffineTransform(scaleX: 1, y: -1)
         view.addSubview(collectionView)
     }
 }
