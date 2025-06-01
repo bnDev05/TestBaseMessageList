@@ -13,7 +13,7 @@ final class ChatViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 8
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
 
@@ -27,6 +27,16 @@ final class ChatViewController: UIViewController {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.safeAreaLayoutGuide.layoutFrame
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { _ in
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }, completion: { _ in
+            self.collectionView.reloadData()
+        })
     }
 
     private func setupUI() {
