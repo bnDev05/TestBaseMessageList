@@ -25,7 +25,7 @@ enum TimeFrameCalculator {
 
             if lines.last != nil {
                 let lineHeight = messageFont.lineHeight
-                let lastLineY = Constants.internalVerticalPadding + CGFloat(lines.count - 1) * lineHeight
+                let lastLineY = Constants.internalVerticalPadding + CGFloat(lines.count - 1) * 22
                 return CGRect(
                     x: bubbleSize.width - timeSize.width - Constants.internalPadding,
                     y: lastLineY + lineHeight - timeSize.height + 3,
@@ -43,7 +43,7 @@ enum TimeFrameCalculator {
         } else {
             return CGRect(
                 x: bubbleSize.width - timeSize.width - Constants.internalPadding,
-                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding + 3,
+                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding - 1,
                 width: timeSize.width,
                 height: timeSize.height
             )
