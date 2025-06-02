@@ -24,8 +24,22 @@ final class MessageCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = Fonts.message
+
+        // Calculate kerning as -3% of font size
+        let fontSize = Fonts.message.pointSize
+        let letterSpacing = -0.03 * fontSize
+
+        // Example placeholder text
+        let text = "Placeholder"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Fonts.message,
+            .kern: letterSpacing
+        ]
+        label.attributedText = NSAttributedString(string: text, attributes: attributes)
+
         return label
     }()
+
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.time
