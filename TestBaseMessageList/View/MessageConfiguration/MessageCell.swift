@@ -97,10 +97,15 @@ final class MessageCell: UICollectionViewCell {
         messageLabel.attributedText = NSAttributedString(string: message.text, attributes: messageAttributes)
 
         // Set time label attributed text with 0% spacing
+        let timeParagraphStyle = NSMutableParagraphStyle()
+        timeParagraphStyle.minimumLineHeight = 14
+        timeParagraphStyle.maximumLineHeight = 14
+
         let timeAttributes: [NSAttributedString.Key: Any] = [
             .font: Fonts.time,
             .kern: 0,
-            .foregroundColor: MessageAppearanceManager.timeTextColor
+            .foregroundColor: MessageAppearanceManager.timeTextColor,
+            .paragraphStyle: timeParagraphStyle
         ]
         timeLabel.attributedText = NSAttributedString(string: time, attributes: timeAttributes)
 
@@ -112,10 +117,15 @@ final class MessageCell: UICollectionViewCell {
         indicatorImage.isHidden = !isSending
         timeLabel.isHidden = isSending
         if !isSending {
+            let timeParagraphStyle = NSMutableParagraphStyle()
+            timeParagraphStyle.minimumLineHeight = 14
+            timeParagraphStyle.maximumLineHeight = 14
+
             let timeAttributes: [NSAttributedString.Key: Any] = [
                 .font: Fonts.time,
                 .kern: 0,
-                .foregroundColor: MessageAppearanceManager.timeTextColor
+                .foregroundColor: MessageAppearanceManager.timeTextColor,
+                .paragraphStyle: timeParagraphStyle
             ]
             timeLabel.attributedText = NSAttributedString(string: time, attributes: timeAttributes)
         }
