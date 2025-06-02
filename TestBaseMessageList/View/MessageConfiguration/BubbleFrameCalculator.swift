@@ -26,7 +26,7 @@ enum BubbleFrameCalculator {
         isTimeSingleLine: Bool,
         isSending: Bool
     ) -> CGFloat {
-        var height = textHeight + (Constants.internalVerticalPadding * 2) + 1
+        var height = textHeight + (Constants.internalVerticalPadding * 2) + 2
         if !isSending && !isTimeSingleLine {
             height += timeHeight + Constants.timeSpacing
         }
