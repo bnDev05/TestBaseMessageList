@@ -32,30 +32,51 @@ final class ChatViewController: UIViewController {
         }
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard traitCollection.verticalSizeClass != previousTraitCollection?.verticalSizeClass ||
-              traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass else {
-            return
-        }
-
-        // Force layout and size invalidation
-        collectionView.frame = view.safeAreaLayoutGuide.layoutFrame
-        collectionView.collectionViewLayout.invalidateLayout()
-
-        // Reload visible cells using the new width
-        let newWidth = collectionView.bounds.width
-        for indexPath in collectionView.indexPathsForVisibleItems {
-            if let cell = collectionView.cellForItem(at: indexPath) as? MessageCell,
-               let message = viewModel.message(at: indexPath.item) {
-                let time = viewModel.formattedTime(for: message)
-                cell.configure(with: message, time: time, containerWidth: newWidth)
+    override func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator
+      ) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { [self]_ in
+            collectionView.frame = view.safeAreaLayoutGuide.layoutFrame
+            collectionView.collectionViewLayout.invalidateLayout()
+    
+            // Reload visible cells using the new width
+            let newWidth = collectionView.bounds.width
+            for indexPath in collectionView.indexPathsForVisibleItems {
+                if let cell = collectionView.cellForItem(at: indexPath) as? MessageCell,
+                   let message = viewModel.message(at: indexPath.item) {
+                    let time = viewModel.formattedTime(for: message)
+                    cell.configure(with: message, time: time, containerWidth: newWidth)
+                }
             }
-        }
-
-        collectionView.reloadData()
-    }
+        }, completion: nil)
+      }
+    
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//
+//        guard traitCollection.verticalSizeClass != previousTraitCollection?.verticalSizeClass ||
+//              traitCollection.horizontalSizeClass != previousTraitCollection?.horizontalSizeClass else {
+//            return
+//        }
+//
+//        // Force layout and size invalidation
+//        collectionView.frame = view.safeAreaLayoutGuide.layoutFrame
+//        collectionView.collectionViewLayout.invalidateLayout()
+//
+//        // Reload visible cells using the new width
+//        let newWidth = collectionView.bounds.width
+//        for indexPath in collectionView.indexPathsForVisibleItems {
+//            if let cell = collectionView.cellForItem(at: indexPath) as? MessageCell,
+//               let message = viewModel.message(at: indexPath.item) {
+//                let time = viewModel.formattedTime(for: message)
+//                cell.configure(with: message, time: time, containerWidth: newWidth)
+//            }
+//        }
+//
+//        collectionView.reloadData()
+//    }
 
     private func setupUI() {
         title = "Chat"
