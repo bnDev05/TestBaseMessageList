@@ -35,7 +35,7 @@ enum TimeFrameCalculator {
             } else {
                 return CGRect(
                     x: messageFrame.maxX + Constants.paddingBetweenMessageAndTime,
-                    y: messageFrame.maxY - timeSize.height,
+                    y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding,
                     width: timeSize.width,
                     height: timeSize.height
                 )
