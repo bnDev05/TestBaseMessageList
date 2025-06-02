@@ -28,13 +28,13 @@ enum TimeFrameCalculator {
                 let lastLineY = Constants.internalVerticalPadding + CGFloat(lines.count - 1) * lineHeight
                 return CGRect(
                     x: bubbleSize.width - timeSize.width - Constants.internalPadding,
-                    y: lastLineY + lineHeight - timeSize.height,
+                    y: lastLineY + lineHeight - timeSize.height + 2,
                     width: timeSize.width,
                     height: timeSize.height
                 )
             } else {
                 return CGRect(
-                    x: messageFrame.maxX + Constants.internalPadding,
+                    x: messageFrame.maxX + Constants.paddingBetweenMessageAndTime,
                     y: messageFrame.maxY - timeSize.height,
                     width: timeSize.width,
                     height: timeSize.height
