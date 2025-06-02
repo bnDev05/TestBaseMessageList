@@ -15,7 +15,7 @@ enum BubbleFrameCalculator {
         isSending: Bool,
         maxBubbleWidth: CGFloat
     ) -> CGFloat {
-        let contentWidth = textWidth + (isTimeSingleLine ? (timeWidth + Constants.internalPadding) : 0)
+        let contentWidth = textWidth + (isTimeSingleLine ? (timeWidth + Constants.paddingBetweenMessageAndTime) : 0)
         let totalWidth = contentWidth + (Constants.internalPadding * 2)
         return max(Constants.minBubbleWidth, min(totalWidth, maxBubbleWidth))
     }
@@ -26,7 +26,7 @@ enum BubbleFrameCalculator {
         isTimeSingleLine: Bool,
         isSending: Bool
     ) -> CGFloat {
-        var height = textHeight + (Constants.internalPadding * 2)
+        var height = textHeight + (Constants.internalVerticalPadding * 2) + 1
         if !isSending && !isTimeSingleLine {
             height += timeHeight + Constants.timeSpacing
         }

@@ -13,8 +13,8 @@ final class MessageCell: UICollectionViewCell {
     static let identifier = "MessageCell"
 
     private enum Fonts {
-        static let message = UIFont.systemFont(ofSize: 16)
-        static let time = UIFont.systemFont(ofSize: 12)
+        static let message = UIFont.systemFont(ofSize: 17, weight: .regular)
+        static let time = UIFont.systemFont(ofSize: 11, weight: .regular)
     }
 
     // MARK: - UI Components

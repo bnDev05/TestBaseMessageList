@@ -49,7 +49,7 @@ final class MessageLayoutCalculator {
 
         let bubbleX = message.isOutgoing ? (containerWidth - bubbleWidth - Constants.horizontalPadding) : Constants.horizontalPadding
         let bubbleFrame = CGRect(x: bubbleX, y: 0, width: bubbleWidth, height: bubbleHeight)
-        let messageFrame = CGRect(x: Constants.internalPadding, y: Constants.internalPadding, width: textSize.width, height: textSize.height)
+        let messageFrame = CGRect(x: Constants.internalPadding, y: Constants.internalVerticalPadding, width: textSize.width, height: textSize.height)
 
         let timeFrame = TimeFrameCalculator.calculate(
             bubbleSize: CGSize(width: bubbleWidth, height: bubbleHeight),
