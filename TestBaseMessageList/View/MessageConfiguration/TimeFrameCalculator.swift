@@ -28,7 +28,7 @@ enum TimeFrameCalculator {
                 let lastLineY = Constants.internalVerticalPadding + CGFloat(lines.count - 1) * lineHeight
                 return CGRect(
                     x: bubbleSize.width - timeSize.width - Constants.internalPadding,
-                    y: lastLineY + lineHeight - timeSize.height + 2,
+                    y: lastLineY + lineHeight - timeSize.height + 3,
                     width: timeSize.width,
                     height: timeSize.height
                 )
@@ -43,7 +43,7 @@ enum TimeFrameCalculator {
         } else {
             return CGRect(
                 x: bubbleSize.width - timeSize.width - Constants.internalPadding,
-                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding + 1,
+                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding + 3,
                 width: timeSize.width,
                 height: timeSize.height
             )
