@@ -26,7 +26,6 @@ final class MessageCell: UICollectionViewCell {
         label.font = Fonts.message
         return label
     }()
-
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.time
@@ -86,17 +85,10 @@ final class MessageCell: UICollectionViewCell {
         bubbleView.backgroundColor = appearance.bubbleColor
         bubbleView.applyRoundedMask(for: message)
 
-        // Set attributed message text with -3% spacing
-        let messageFontSize = Fonts.message.pointSize
-        let messageLetterSpacing = -0.03 * messageFontSize
-        let messageAttributes: [NSAttributedString.Key: Any] = [
-            .font: Fonts.message,
-            .kern: messageLetterSpacing,
-            .foregroundColor: appearance.textColor
-        ]
-        messageLabel.attributedText = NSAttributedString(string: message.text, attributes: messageAttributes)
-
-        // Set time label attributed text with 0% spacing
+        messageLabel.text = message.text
+        messageLabel.textColor = appearance.textColor
+        
+        // MARK: - Time Label Attributed Text
         let timeParagraphStyle = NSMutableParagraphStyle()
         timeParagraphStyle.minimumLineHeight = 14
         timeParagraphStyle.maximumLineHeight = 14
@@ -142,5 +134,3 @@ final class MessageCell: UICollectionViewCell {
         ).totalHeight
     }
 }
-
-
