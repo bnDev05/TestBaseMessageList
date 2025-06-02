@@ -40,7 +40,7 @@ final class MockDataProvider {
                 isSending: false
             ),
             Message(
-                text: "One line message max width one line................",
+                text: "One line message max width one line...............",
                 date: now.addingTimeInterval(-120), // 2 minutes ago
                 isOutgoing: false,
                 isSending: false

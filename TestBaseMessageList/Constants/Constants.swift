@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     static let horizontalPadding: CGFloat = 12
-    static let bubbleWidthRatio: CGFloat = 0.9
+    static let bubbleWidthRatio: CGFloat = 0.91
     static let minBubbleWidth: CGFloat = 64
     static let internalPadding: CGFloat = 12
     static let internalVerticalPadding: CGFloat = 6

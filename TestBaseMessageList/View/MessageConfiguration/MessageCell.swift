@@ -24,19 +24,6 @@ final class MessageCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = Fonts.message
-
-        // Calculate kerning as -3% of font size
-        let fontSize = Fonts.message.pointSize
-        let letterSpacing = -0.03 * fontSize
-
-        // Example placeholder text
-        let text = "Placeholder"
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Fonts.message,
-            .kern: letterSpacing
-        ]
-        label.attributedText = NSAttributedString(string: text, attributes: attributes)
-
         return label
     }()
 
@@ -99,8 +86,23 @@ final class MessageCell: UICollectionViewCell {
         bubbleView.backgroundColor = appearance.bubbleColor
         bubbleView.applyRoundedMask(for: message)
 
-        messageLabel.text = message.text
-        messageLabel.textColor = appearance.textColor
+        // Set attributed message text with -3% spacing
+        let messageFontSize = Fonts.message.pointSize
+        let messageLetterSpacing = -0.03 * messageFontSize
+        let messageAttributes: [NSAttributedString.Key: Any] = [
+            .font: Fonts.message,
+            .kern: messageLetterSpacing,
+            .foregroundColor: appearance.textColor
+        ]
+        messageLabel.attributedText = NSAttributedString(string: message.text, attributes: messageAttributes)
+
+        // Set time label attributed text with 0% spacing
+        let timeAttributes: [NSAttributedString.Key: Any] = [
+            .font: Fonts.time,
+            .kern: 0,
+            .foregroundColor: MessageAppearanceManager.timeTextColor
+        ]
+        timeLabel.attributedText = NSAttributedString(string: time, attributes: timeAttributes)
 
         configureSendingState(message: message, time: time)
     }
@@ -109,7 +111,14 @@ final class MessageCell: UICollectionViewCell {
         let isSending = message.isSending
         indicatorImage.isHidden = !isSending
         timeLabel.isHidden = isSending
-        if !isSending { timeLabel.text = time }
+        if !isSending {
+            let timeAttributes: [NSAttributedString.Key: Any] = [
+                .font: Fonts.time,
+                .kern: 0,
+                .foregroundColor: MessageAppearanceManager.timeTextColor
+            ]
+            timeLabel.attributedText = NSAttributedString(string: time, attributes: timeAttributes)
+        }
     }
 
     // MARK: - Height Calculation

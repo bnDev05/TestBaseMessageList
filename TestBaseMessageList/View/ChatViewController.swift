@@ -74,7 +74,7 @@ extension ChatViewController: UICollectionViewDataSource {
         }
         
         let time = viewModel.formattedTime(for: message)
-        let containerWidth = collectionView.bounds.width
+        let containerWidth = view.bounds.width
         
         cell.configure(
             with: message,
