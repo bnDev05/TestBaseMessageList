@@ -85,7 +85,18 @@ final class MessageCell: UICollectionViewCell {
         bubbleView.backgroundColor = appearance.bubbleColor
         bubbleView.applyRoundedMask(for: message)
 
-        messageLabel.text = message.text
+//        messageLabel.text = message.text
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = 22
+        paragraphStyle.maximumLineHeight = 22
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Fonts.message,
+            .kern: 0,
+            .paragraphStyle: paragraphStyle
+        ]
+
+        messageLabel.attributedText = NSAttributedString(string: message.text, attributes: attributes)
         messageLabel.textColor = appearance.textColor
         
         // MARK: - Time Label Attributed Text

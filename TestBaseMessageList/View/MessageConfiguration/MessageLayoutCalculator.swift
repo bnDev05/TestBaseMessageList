@@ -18,7 +18,7 @@ final class MessageLayoutCalculator {
         let maxBubbleWidth = (containerWidth - Constants.horizontalPadding * 2) * Constants.bubbleWidthRatio
         let maxTextWidth = maxBubbleWidth - (Constants.internalPadding * 2)
 
-        let textSize = message.text.size(constrainedTo: maxTextWidth, font: messageFont)
+        let textSize = message.text.attributedSize(constrainedTo: maxTextWidth, font: messageFont, lineHeight: 22)
         let timeText = message.isSending ? "" : time
         let timeSize = timeText.size(constrainedTo: Constants.timeMaxWidth, font: timeFont)
         let activityIndicatorWidth: CGFloat = message.isSending ? (Constants.indicatorSize + Constants.indicatorSpacing) : 0

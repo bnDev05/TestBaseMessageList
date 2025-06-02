@@ -43,7 +43,7 @@ enum TimeFrameCalculator {
         } else {
             return CGRect(
                 x: bubbleSize.width - timeSize.width - Constants.internalPadding,
-                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding,
+                y: bubbleSize.height - timeSize.height - Constants.internalVerticalPadding + 2,
                 width: timeSize.width,
                 height: timeSize.height
             )
